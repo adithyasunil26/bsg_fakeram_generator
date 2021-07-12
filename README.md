@@ -1,1 +1,1 @@
-# bsg_fakeram_generator
+# BSG Black-box SRAM Generator for FuseSoC
