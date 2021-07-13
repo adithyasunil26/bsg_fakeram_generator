@@ -1,0 +1,19 @@
+CAPI=2:
+
+name: ::bsg_fakeram_gen:0-r1
+description: bsg_fakeram_gen
+
+generators:
+  bsg_fakeram_gen:
+    interpreter: python
+    command: bsg_fakeram_gen.py
+    description: Run round robin arbitration unit generator
+    usage: |
+      The generator allows the user to run the BSG fakeram egenrator through FuseSoC.
+      Parameters:
+        path_to_cfg (str): Path to config file to use for fakeram generation
+
+provider :
+  name : github
+  user : adithyasunil26
+  repo : bsg_fakeram_generator
