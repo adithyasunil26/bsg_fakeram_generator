@@ -7,7 +7,9 @@ class BSGRoundRobinArbGenerator(Generator):
         path_to_cfg = self.config.get('path_to_cfg', 'example_cfgs/freepdk45.cfg')
         
         cwd = self.files_root
-
+        
+        rc = subprocess.call(['pwd'], cwd=cwd)
+        
         args = ['make', 'tools']
         
         rc = subprocess.call(args, cwd=cwd)
