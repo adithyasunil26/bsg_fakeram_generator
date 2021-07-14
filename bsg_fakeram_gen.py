@@ -25,7 +25,7 @@ class BSGRoundRobinArbGenerator(Generator):
         if rc:
             exit(1)
         
-        self.add_files([{ 'results/sram_8x512_1rw.v' : {'file_type' : 'verilogSource'}}, { 'results/sram_32x32_1rw.v' : {'file_type' : 'verilogSource'}}])
+        self.add_files([{ 'results/sram_8x512_1rw/sram_8x512_1rw.v' : {'file_type' : 'verilogSource'}}, { 'results/sram_32x32_1rw/sram_32x32_1rw.v' : {'file_type' : 'verilogSource'}}])
 
 g = BSGRoundRobinArbGenerator()
 g.run()
