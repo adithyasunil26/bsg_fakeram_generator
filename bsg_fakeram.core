@@ -1,0 +1,35 @@
+CAPI=2:
+
+name: ::bsg_fakeram:0-r1
+description: bsg_fakeram
+
+filesets:
+  rtl:
+    depend:
+      - bsg_fakeram_gen
+
+targets:
+  default:
+    generate: [gen]
+
+  lint:
+    default_tool: verilator
+    filesets: [rtl]
+    generate: [gen]
+    tools:
+      verilator: 
+        mode: lint-only
+    toplevel: sram_8x512_1rw
+    parameters: 
+      - inputs_p=2
+
+generate:
+  gen:
+    generator: bsg_fakeram_gen
+    parameters:
+      path_to_cfg: 'example_cfgs/freepdk45.cfg'
+
+provider :
+  name : github
+  user : bespoke-silicon-group
+  repo : bsg_fakeram
