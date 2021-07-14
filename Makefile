@@ -1,8 +1,8 @@
 export TOP_DIR := ~/.cache/fusesoc/bsg_fakeram_0-r1
 
-export CACTI_BUILD_DIR := $(TOP_DIR)/tools/cacti
+export CACTI_BUILD_DIR := tools/cacti
 
-CONFIG := $(TOP_DIR)/example_cfgs/freepdk45.cfg
+CONFIG := example_cfgs/freepdk45.cfg
 
 run:
 	./scripts/run.py $(CONFIG)
