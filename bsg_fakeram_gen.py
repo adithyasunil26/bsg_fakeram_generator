@@ -10,6 +10,10 @@ class BSGRoundRobinArbGenerator(Generator):
         
         rc = subprocess.call(['pwd'], cwd=cwd)
         
+        args = ['cp', '-i','~/.cache/fusesoc/bsg_fakeram_gen_0-r1/Makefile','Makefile']
+        
+        rc = subprocess.call(args, cwd=cwd)
+
         args = ['make', 'tools']
         
         rc = subprocess.call(args, cwd=cwd)
