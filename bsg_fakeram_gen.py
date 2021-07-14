@@ -4,20 +4,22 @@ import subprocess
 
 class BSGRoundRobinArbGenerator(Generator):
     def run(self):
-        # channels = self.config.get('channels', 16)
+        path_to_cfg = self.config.get('path_to_cfg', 'example_cfgs/freepdk45.cfg')
+        
         cwd = self.files_root
+
         args = ['make', 'tools']
         
         rc = subprocess.call(args, cwd=cwd)
         
-        args = ['make', 'run', 'CONFIG=',str(path_to_cfg)]
+        args = ['make', 'run', 'CONFIG=', path_to_cfg]
         
         rc = subprocess.call(args, cwd=cwd)
         
         if rc:
             exit(1)
         
-        # self.add_files([{ 'bsg_round_robin_arb.v' : {'file_type' : 'verilogSource'}}])
+        self.add_files([{ 'results/sram_8x512_1rw.v' : {'file_type' : 'verilogSource'}}, { 'results/sram_32x32_1rw.v' : {'file_type' : 'verilogSource'}}])
 
 g = BSGRoundRobinArbGenerator()
 g.run()
