@@ -20,8 +20,6 @@ targets:
       verilator: 
         mode: lint-only
     toplevel: sram_8x512_1rw
-    parameters: 
-      - inputs_p=2
 
 generate:
   gen:
