@@ -7,7 +7,7 @@ generators:
   bsg_fakeram_gen:
     interpreter: python
     command: bsg_fakeram_gen.py
-    description: Run round robin arbitration unit generator
+    description: Runs BSG fakeram generator
     usage: |
       The generator allows the user to run the BSG fakeram egenrator through FuseSoC.
       Parameters:
