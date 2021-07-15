@@ -3,7 +3,7 @@ export TOP_DIR := ~/.cache/fusesoc/bsg_fakeram_0-r1
 export CACTI_BUILD_DIR := tools/cacti
 
 run:
-	./scripts/run.py example_cfgs/freepdk45.cfg
+	./scripts/run.py conf.cfg
 
 view.%:
 	klayout ./results/$*/$*.lef &

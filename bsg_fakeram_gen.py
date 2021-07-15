@@ -13,8 +13,11 @@ class BSGFakeramGenerator(Generator):
 
         args = ['make', 'tools']
         rc = subprocess.call(args, cwd=cwd)
+
+        args = ['cp', str(path_to_cfg),'./conf.cfg']
+        rc = subprocess.call(args, cwd=cwd)
         
-        args = ['make', 'run', 'CONFIG=', path_to_cfg]
+        args = ['make', 'run']
         rc = subprocess.call(args, cwd=cwd)
         
         args = ['cp', '-rf','results/sram_8x512_1rw/sram_8x512_1rw.v','../generated/bsg_fakeram-gen_0/sram_8x512_1rw.v']
