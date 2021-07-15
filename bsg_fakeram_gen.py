@@ -2,7 +2,7 @@
 from fusesoc.capi2.generator import Generator
 import subprocess
 
-class BSGRoundRobinArbGenerator(Generator):
+class BSGFakeramGenerator(Generator):
     def run(self):
         path_to_cfg = self.config.get('path_to_cfg', 'example_cfgs/freepdk45.cfg')
         
@@ -28,6 +28,6 @@ class BSGRoundRobinArbGenerator(Generator):
         
         self.add_files([{ 'sram_8x512_1rw.v' : {'file_type' : 'verilogSource'}}, { 'sram_32x32_1rw.v' : {'file_type' : 'verilogSource'}}])
 
-g = BSGRoundRobinArbGenerator()
+g = BSGFakeramGenerator()
 g.run()
 g.write()
