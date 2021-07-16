@@ -6,22 +6,22 @@ import json
 class BSGFakeramGenerator(Generator):
     def run(self):
         path_to_cfg = self.config.get('path_to_cfg', 'example_cfgs/freepdk45.cfg')
-        
+
         cwd = self.files_root
-        
+
         args = ['cp', '-rf','../bsg_fakeram_gen_0-r1/Makefile','Makefile']
         rc = subprocess.call(args, cwd=cwd)
 
         args = ['make', 'tools']
         rc = subprocess.call(args, cwd=cwd)
 
-        args = ['cp', str(path_to_cfg),'./conf.cfg']
+        args = ['cp', path_to_cfg,'./conf.cfg']
         rc = subprocess.call(args, cwd=cwd)
-        
+
         args = ['make', 'run']
         rc = subprocess.call(args, cwd=cwd)
-        
-        f = open('conf.cfg',"r")
+
+        f = open(path_to_cfg)
         data=json.load(f)
         for i in data["srams"]:
             a=i["name"]
