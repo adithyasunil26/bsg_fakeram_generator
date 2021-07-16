@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from fusesoc.capi2.generator import Generator
 import subprocess
+import json
 
 class BSGFakeramGenerator(Generator):
     def run(self):
@@ -20,16 +21,16 @@ class BSGFakeramGenerator(Generator):
         args = ['make', 'run']
         rc = subprocess.call(args, cwd=cwd)
         
-        args = ['cp', '-rf','results/sram_8x512_1rw/sram_8x512_1rw.v','../generated/bsg_fakeram-gen_0/sram_8x512_1rw.v']
-        rc = subprocess.call(args, cwd=cwd)
+        f = open('conf.cfg',"r")
+        data=json.load(f)
+        for i in data["srams"]:
+            a=i["name"]
+            args = ['cp', '-rf','results/{}/{}.v'.format(a,a),'../generated/bsg_fakeram-gen_0/{}.v'.format(a)]
+            rc = subprocess.call(args, cwd=cwd)
+            self.add_files([{ '{}.v'.format(a) : {'file_type' : 'verilogSource'}}])
         
-        args = ['cp', '-rf','results/sram_32x32_1rw/sram_32x32_1rw.v','../generated/bsg_fakeram-gen_0/sram_32x32_1rw.v']
-        rc = subprocess.call(args, cwd=cwd)
-
         if rc:
             exit(1)
-        
-        self.add_files([{ 'sram_8x512_1rw.v' : {'file_type' : 'verilogSource'}}, { 'sram_32x32_1rw.v' : {'file_type' : 'verilogSource'}}])
 
 g = BSGFakeramGenerator()
 g.run()
