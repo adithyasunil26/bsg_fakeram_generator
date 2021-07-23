@@ -7,26 +7,28 @@ class BSGFakeramGenerator(Generator):
     def run(self):
         path_to_cfg = self.config.get('path_to_cfg', 'example_cfgs/freepdk45.cfg')
 
-        cwd = self.files_root
+        sd = subprocess.Popen( 'pwd', stdout=subprocess.PIPE ).communicate()[0]
+
+        rd = '../../bsg_fakeram_0-r1'
 
         args = ['cp', '-rf','../bsg_fakeram_gen_0-r1/Makefile','Makefile']
-        rc = subprocess.call(args, cwd=cwd)
+        rc = subprocess.call(args, cwd=rd)
 
         args = ['make', 'tools']
-        rc = subprocess.call(args, cwd=cwd)
+        rc = subprocess.call(args, cwd=rd)
 
         args = ['cp', path_to_cfg,'./conf.cfg']
-        rc = subprocess.call(args, cwd=cwd)
+        rc = subprocess.call(args, cwd=rd)
 
         args = ['make', 'run']
-        rc = subprocess.call(args, cwd=cwd)
+        rc = subprocess.call(args, cwd=rd)
 
         f = open(path_to_cfg)
         data=json.load(f)
         for i in data["srams"]:
             a=i["name"]
-            args = ['cp', '-rf','results/{}/{}.v'.format(a,a),'../generated/bsg_fakeram-gen_0/{}.v'.format(a)]
-            rc = subprocess.call(args, cwd=cwd)
+            args = ['cp', '-rf','results/{}/{}.v'.format(a,a),sd+'/{}.v'.format(a)]
+            rc = subprocess.call(args, cwd=rd)
             self.add_files([{ '{}.v'.format(a) : {'file_type' : 'verilogSource'}}])
         
         if rc:
