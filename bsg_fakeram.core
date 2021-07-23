@@ -10,7 +10,7 @@ filesets:
 
 targets:
   default:
-    generate: [gen]
+    filesets: [rtl]
 
   lint:
     default_tool: verilator
