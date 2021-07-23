@@ -40,4 +40,3 @@ class BSGFakeramGenerator(Generator):
 g = BSGFakeramGenerator()
 g.run()
 g.write()
-~             
