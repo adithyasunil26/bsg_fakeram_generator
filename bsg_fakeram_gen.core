@@ -5,7 +5,7 @@ description: bsg_fakeram_gen
 
 generators:
   bsg_fakeram_gen:
-    interpreter: python
+    interpreter: python3
     command: bsg_fakeram_gen.py
     description: Runs BSG fakeram generator
     usage: |
