@@ -23,7 +23,6 @@ To use a custom config file follow these steps:
 1. Navigate to library
 ```bash
 cd fusesoc_libraries/bsg_fakeram/
-pwd
 ```
 2. Open the `bsg_fakeram.core` file and change `path_to_cfg` to path to custom config file
 3. Return to original directory with 
