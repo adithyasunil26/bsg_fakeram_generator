@@ -25,7 +25,7 @@ class BSGFakeramGenerator(Generator):
         args = ['make', 'run']
         rc = subprocess.call(args, cwd=rd)
 
-        f = open(path_to_cfg)
+        f = open("../" + path_to_cfg)
         data=json.load(f)
         for i in data["srams"]:
             a = i["name"]
